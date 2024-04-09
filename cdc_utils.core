@@ -1,17 +1,16 @@
-CAPI=1
-[main]
+CAPI=2:
+name: ::cdc_utils:0.1-r1
+description: Verilog CDC implementations
 
-name = ::cdc_utils:0.1
-description = Verilog CDC implementations
+filesets:
+  rtl:
+    files:
+      - rtl/verilog/sync2_pgen.v
+      - rtl/verilog/cc561.v
+    file_type: verilogSource
+  sdc:
+    files: [data/cdc_utils.sdc : {file_type : SDC}]
 
-[fileset rtl]
-files =
- rtl/verilog/sync2_pgen.v
- rtl/verilog/cc561.v
-file_type = verilogSource
-
-[fileset sdc]
-files =
- data/cdc_utils.sdc[file_type=SDC]
-usage = quartus
-
+targets:
+  default:
+    filesets: [rtl, "tool_quartus? (sdc)"]
