@@ -15,18 +15,18 @@ http://www.sunburst-design.com/papers/CummingsSNUG2008Boston_CDC.pdf
 
 module cc561
   #(parameter DW=0)
-  (input 	       aclk,
-   input 	       arst,
-   input [DW-1:0]      adata,
-   input 	       aen,
-   input 	       bclk,
+  (input wire	       aclk,
+   input wire	       arst,
+   input wire [DW-1:0] adata,
+   input wire	       aen,
+   input wire	       bclk,
    output reg [DW-1:0] bdata,
-   output reg 	       ben);
+   output reg	       ben);
 
    reg [DW-1:0]    adata_r;
    reg 		   aen_r = 1'b0;
    wire 	   bpulse;
-   
+
    always @(posedge aclk) begin
       if (aen)
 	adata_r <= adata;
@@ -41,7 +41,7 @@ module cc561
 	bdata <= adata_r; //CDC
       ben <= bpulse;
    end
-   
+
    sync2_pgen sync2_pgen
      (.c (bclk),
       .d (aen_r), //CDC

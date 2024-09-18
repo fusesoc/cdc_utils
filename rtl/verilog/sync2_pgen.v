@@ -13,13 +13,13 @@ Verification Techniques Using SystemVerilog"
 http://www.sunburst-design.com/papers/CummingsSNUG2008Boston_CDC.pdf
 */
 module sync2_pgen
-  (input  c,
-   input  d,
-   output p,
-   output q);
+  (input wire  c,
+   input wire  d,
+   output wire p,
+   output wire q);
 
    reg 	  q1, q2, q3;
-   
+
    always @(posedge c) begin
       q1 <= d;
       q2 <= q1;
@@ -28,5 +28,5 @@ module sync2_pgen
 
    assign p = q2 ^ q3;
    assign q = q3;
-   
+
 endmodule
