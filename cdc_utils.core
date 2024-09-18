@@ -1,5 +1,5 @@
 CAPI=2:
-name: ::cdc_utils:0.1-r1
+name: ::cdc_utils:0.2
 description: Verilog CDC implementations
 
 filesets:
